@@ -582,6 +582,8 @@ class IncompleteProducerBatches(object):
             return self._incomplete.add(batch)
 
     def remove(self, batch):
+        if batch not in self._incomplete:
+            return
         with self._lock:
             return self._incomplete.remove(batch)
 
